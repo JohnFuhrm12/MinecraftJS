@@ -22,11 +22,6 @@ document.body.appendChild( renderer.domElement );
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
-const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-const material = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
-const grassBlock = new THREE.Mesh( geometry, material );
-scene.add( grassBlock );
-
 const light1 = new THREE.DirectionalLight();
 light1.position.set(1, 1, 1);
 scene.add(light1);
@@ -35,9 +30,15 @@ const ambientLight = new THREE.AmbientLight();
 ambientLight.intensity = 0.1;
 scene.add(ambientLight);
 
-camera.position.z = 5;
+camera.position.z = 80;
+camera.position.y = 20;
 
-generateWorld(scene, 20);
+const worldSize = {
+  width: 16,
+  height: 48,
+}
+
+generateWorld(scene, worldSize);
 
 function animate() {
 	requestAnimationFrame( animate );
